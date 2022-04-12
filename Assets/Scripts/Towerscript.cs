@@ -21,6 +21,7 @@ public class Towerscript : MonoBehaviour
 
     public void SellTower()
     {
+        towerLocation.GetComponent<Towergenerator>().hasTower = false;
         Destroy(gameObject);
     }
    }
