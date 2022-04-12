@@ -15,8 +15,16 @@ public class Towerselector : MonoBehaviour
         else
         {
             PlayerController.curMoney -= towerPrefab.GetComponent<Towerscript>().purchaseCost;
-            towerLocation.GetComponent<Towergenerator>().tower = Instantiate(towerPrefab, towerLocation.transform.position, Quaternion.identity);
-            towerLocation.GetComponent<Towergenerator>().hasTower = true;
+
+            Towergenerator generator = towerLocation.GetComponent<Towergenerator>();
+            GameObject tower = Instantiate(towerPrefab, towerLocation.transform.position, Quaternion.identity);
+            tower.GetComponent<Towerscript>().towerLocation = towerLocation;
+
+            // towerLocation.GetComponent<Towergenerator>().tower = Instantiate(towerPrefab, towerLocation.transform.position, Quaternion.identity);
+            // towerLocation.GetComponent<Towergenerator>().hasTower = true;
+            
+            generator.tower = tower;
+            generator.hasTower = true;
         }
         gameObject.SetActive(false);
     }
