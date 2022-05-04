@@ -5,9 +5,11 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
+    private float wave;
     [SerializeField] private float health = 10f;
     [SerializeField] private int damage = 10;
     [SerializeField] private float speed = 1f;
+    
     private GameObject prev;
     private GameObject next;
     // Start is called before the first frame update
@@ -15,6 +17,12 @@ public class Enemy : MonoBehaviour
     {
         prev = Pathgenerator.path[0];
         transform.position = prev.transform.position;
+    }
+
+    void Awake() {
+        wave = GameObject.FindGameObjectWithTag("Spawner").GetComponent<enemyspawner>().wavenum;
+        health *= (wave / 2);
+        speed *= (wave / 2);
     }
 
     // Update is called once per frame

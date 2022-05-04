@@ -18,8 +18,8 @@ public class Towerupgrader : MonoBehaviour
         else 
         {
             PlayerController.curMoney -= tower.GetComponent<Towerscript>().upgradeCost;
-            tower.GetComponent<Towerscript>().towerDamage += 10f;
-            tower.GetComponent<Towerscript>().shootRate += 10f;
+            tower.GetComponent<Towerscript>().towerDamage *= 1.5f;
+            tower.GetComponent<Towerscript>().shootRate *= 1.5f;
             tower.GetComponent<Towerscript>().UpgradeTower();
         }
         gameObject.SetActive(false);

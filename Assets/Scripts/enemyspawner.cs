@@ -12,7 +12,7 @@ public class enemyspawner : MonoBehaviour
     [SerializeField] private float Spawntimer = 5f;
     [SerializeField] private float timer = 5f;
     [SerializeField] private Text timerText;
-    [SerializeField] private float wavenum = 1f;
+    [SerializeField] public float wavenum = 1f;
     [SerializeField] private Text wavenumText;
     private void Update()
     {
@@ -20,9 +20,9 @@ public class enemyspawner : MonoBehaviour
         wavenumText.text = "Wave: " + ((int)wavenum).ToString();
         if (timer <= 0)
         {
+            wavenum++;
             StartCoroutine(SpawnWave());
             timer = Spawntimer;
-            wavenum++;
         }
         if (!iswavespawn)
             timer -= Time.deltaTime;
